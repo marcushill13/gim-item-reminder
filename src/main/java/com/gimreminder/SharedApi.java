@@ -15,10 +15,14 @@ import okhttp3.Response;
 final class SharedApi
 {
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    private final Gson gson = new Gson();
+    private final Gson gson;
     private final OkHttpClient http;
 
-    SharedApi(OkHttpClient http) { this.http = http.newBuilder().callTimeout(15, java.util.concurrent.TimeUnit.SECONDS).build(); }
+    SharedApi(OkHttpClient http, Gson gson)
+    {
+        this.http = http.newBuilder().callTimeout(15, java.util.concurrent.TimeUnit.SECONDS).build();
+        this.gson = gson;
+    }
 
     JsonObject health(String base) throws IOException
     {
