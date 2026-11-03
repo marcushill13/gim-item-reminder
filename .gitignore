@@ -1,0 +1,11 @@
+.gradle/
+build/
+.idea/
+*.iml
+.env
+.dev.vars
+backend/node_modules/
+backend/.wrangler/
+*.log
+.DS_Store
+*.zip
