@@ -1,0 +1,9 @@
+name = "gim-item-reminder"
+main = "src.js"
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "gim-item-reminder"
+database_id = "911e3117-f8eb-4207-bc52-4d3b5cae7d52"
+migrations_dir = "migrations"
