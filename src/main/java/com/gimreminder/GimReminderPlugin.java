@@ -1,5 +1,6 @@
 package com.gimreminder;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -57,6 +58,7 @@ public final class GimReminderPlugin extends Plugin
     @Inject private ClientToolbar toolbar;
     @Inject private ItemManager itemManager;
     @Inject private OkHttpClient http;
+    @Inject private Gson gson;
     @Inject private DrawManager drawManager;
     @Inject private ClientThread clientThread;
 
@@ -82,7 +84,7 @@ public final class GimReminderPlugin extends Plugin
     @Override protected void startUp()
     {
         worker = Executors.newSingleThreadExecutor(r -> { Thread t = new Thread(r, "gim-reminder-worker"); t.setDaemon(true); return t; });
-        api = new SharedApi(http);
+        api = new SharedApi(http, gson);
         activeGroupCode = config.groupCode() == null ? "" : config.groupCode().trim();
         activeOwnerToken = config.creatorToken() == null ? "" : config.creatorToken().trim();
         panel = new GimReminderPanel(this);
